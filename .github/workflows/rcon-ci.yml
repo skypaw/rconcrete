@@ -9,16 +9,28 @@ jobs:
       - name: Install packages
         run: |
           pip3 install -r requirements.txt
-      - name: Run unit tests
+      - name: Run unit tests with coverage
         run: |
-          echo "Run pytest"
+          $PYTHONPATH=$(pdw)
+          mkdir -p coverage
+          coverage run -m pytest
+          coverage xml -o coverage/test-coverage.xml
+      - uses: actions/upload-artifact@master
+        with: test-coverage
+          name: test-coverage
+          path: coverage/
   sonarcloud:
+    needs: Run-tests
     name: SonarCloud
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+      - uses: actions/download-artifact@master
+        with:
+          name: test-coverage
+          path: coverage/
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
