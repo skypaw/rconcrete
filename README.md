@@ -1,1 +1,2 @@
-# rconcrete
+[![rcon-ci](https://github.com/skypaw/rconcrete/actions/workflows/rcon-ci.yml/badge.svg?branch=main)](https://github.com/skypaw/rconcrete/actions/workflows/rcon-ci.yml) [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=skypaw_rconcrete&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=skypaw_rconcrete)
+# rconcret
