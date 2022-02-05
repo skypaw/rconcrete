@@ -13,7 +13,8 @@ jobs:
         run: |
           export PYTHONPATH=$(pwd)
           mkdir -p coverage
-          coverage run -m pytest
+          cat .coveragerc
+          coverage run -m --branch pytest
           coverage xml -o coverage/test-coverage.xml
       - uses: actions/upload-artifact@v2
         with:
