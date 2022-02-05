@@ -1,0 +1,14 @@
+name: rcon-ci
+on: [push]
+jobs:
+  Run-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v2
+      - name: Install packages
+        run: |
+          pip3 install -r requirements.txt
+      - name: Run unit tests
+        run: |
+          echo "Run pytest"
